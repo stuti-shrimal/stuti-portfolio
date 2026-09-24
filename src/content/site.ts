@@ -208,7 +208,7 @@ export const site = {
   ],
 
   links: {
-    resume: "/resume/Stuti_Shrimal_Sept2026_Data_Engineer.pdf",
+    resume: "/resume/Stuti_Shrimal_September2026_Data_Engineer.pdf",
     linkedin: "https://www.linkedin.com/in/stuti-shrimal/",
     github: "https://github.com/stuti-shrimal",
     email: "mailto:stutids@terpmail.umd.edu",
