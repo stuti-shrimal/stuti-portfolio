@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { site } from "@/content/site";
 import { Mail } from "lucide-react";
+import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -23,12 +24,12 @@ export default function ContactPage() {
           </li>
           <li>
             <a href={site.links.linkedin} className="inline-flex items-center gap-2">
-              <span className="font-mono text-accent">in</span> LinkedIn
+              <LinkedInIcon className="text-accent" /> LinkedIn
             </a>
           </li>
           <li>
             <a href={site.links.github} className="inline-flex items-center gap-2">
-              <span className="font-mono text-accent">gh</span> GitHub
+              <GitHubIcon className="text-accent" /> GitHub
             </a>
           </li>
           <li>

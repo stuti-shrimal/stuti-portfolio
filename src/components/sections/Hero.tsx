@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import { site } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -13,7 +14,7 @@ export function Hero() {
       <div className="aurora pointer-events-none absolute inset-0" />
       <div className="grid-fade pointer-events-none absolute inset-0" />
       <div className="noise absolute inset-0" />
-      <div className="relative mx-auto grid max-w-6xl items-end gap-14 lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_auto]">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -61,11 +62,11 @@ export function Hero() {
             <a href={site.links.resume} className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm">
               <Download size={16} /> Download resume
             </a>
-            <a href={site.links.linkedin} className="grid h-12 w-12 place-items-center rounded-full border border-line font-mono text-[11px]" aria-label="LinkedIn">
-              in
+            <a href={site.links.linkedin} className="grid h-12 w-12 place-items-center rounded-full border border-line" aria-label="LinkedIn">
+              <LinkedInIcon />
             </a>
-            <a href={site.links.github} className="grid h-12 w-12 place-items-center rounded-full border border-line font-mono text-[11px]" aria-label="GitHub">
-              gh
+            <a href={site.links.github} className="grid h-12 w-12 place-items-center rounded-full border border-line" aria-label="GitHub">
+              <GitHubIcon />
             </a>
             <a href={site.links.email} className="grid h-12 w-12 place-items-center rounded-full border border-line" aria-label="Email me">
               <Mail size={16} />
@@ -80,9 +81,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.18, duration: 0.7, ease }}
-          className="glass relative w-full rounded-[1.75rem] p-3"
+          className="glass relative mx-auto w-full max-w-[220px] rounded-[1.5rem] p-2.5 lg:mx-0"
         >
-          <div className="overflow-hidden rounded-[1.35rem] border border-line bg-bg-elev">
+          <div className="overflow-hidden rounded-[1.15rem] border border-line bg-bg-elev">
             <img
               src={site.person.headshot}
               alt={`Portrait of ${site.person.name}`}
@@ -91,8 +92,8 @@ export function Hero() {
               className="aspect-[4/5] h-auto w-full object-cover"
             />
           </div>
-          <div className="px-3 pt-4 pb-3">
-            <p className="font-serif text-2xl">{site.person.name}</p>
+          <div className="px-2 pt-3 pb-2">
+            <p className="font-serif text-xl">{site.person.name}</p>
             <p className="mt-1 text-sm text-muted">{site.person.secondaryRole}</p>
             <p className="mt-3 text-xs leading-5 text-muted">{site.person.location}</p>
           </div>
