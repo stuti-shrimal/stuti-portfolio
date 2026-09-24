@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img">
+  <title>Professional headshot placeholder. Replace this file with your photo.</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1814"/>
+      <stop offset="100%" stop-color="#0e0e10"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#bg)"/>
+  <circle cx="360" cy="330" r="150" fill="#24211c"/>
+  <circle cx="360" cy="300" r="72" fill="#e4d2b0" opacity="0.9"/>
+  <path d="M210 720c20-140 80-210 150-210s130 70 150 210" fill="#24211c"/>
+  <text x="360" y="820" text-anchor="middle" fill="#e4d2b0" font-family="ui-monospace, monospace" font-size="16" letter-spacing="4">REPLACE PHOTO</text>
+</svg>
