@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { ProjectArt } from "@/components/ui/ProjectArt";
-import { Gallery } from "@/components/projects/Gallery";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,21 +59,6 @@ export default async function ProjectPage({ params }: Props) {
             <li key={item}>{item}</li>
           ))}
         </ul>
-      </section>
-      <section className="mt-10">
-        <h2 className="font-serif text-2xl">Architecture</h2>
-        <ol className="mt-4 space-y-3">
-          {project.architecture.map((step, i) => (
-            <li key={step} className="flex gap-3 text-sm">
-              <span className="font-mono text-accent">{String(i + 1).padStart(2, "0")}</span>
-              {step}
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section className="mt-10">
-        <h2 className="font-serif text-2xl">Screenshots</h2>
-        <Gallery items={[...project.screenshots]} />
       </section>
       <div className="mt-8 flex flex-wrap gap-2">
         {project.tech.map((t) => (

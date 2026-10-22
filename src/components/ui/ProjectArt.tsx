@@ -9,6 +9,7 @@ const palettes: Record<string, [string, string]> = {
   hr: ["#e4d2b0", "#9eb0c8"],
   traffic: ["#b7c3d4", "#e4d2b0"],
   portfolio: ["#d7c4a4", "#b7c3d4"],
+  model: ["#8ea0b8", "#c9b79a"],
 };
 
 export function ProjectArt({ hint, title }: { hint: string; title: string }) {

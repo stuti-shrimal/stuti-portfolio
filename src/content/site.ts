@@ -57,12 +57,10 @@ export type Project = {
   impact: string[];
   highlights: string[];
   tech: string[];
-  architecture: string[];
   /** REPLACE with a public repo URL, or leave undefined. */
   github?: string;
   /** REPLACE with a live demo URL, or leave undefined. */
   live?: string;
-  screenshots: { label: string; caption: string }[];
 };
 
 export type Certification = {
@@ -541,24 +539,8 @@ export const site = {
         "Interactive visualizations alongside the written answer.",
       ],
       tech: ["Python", "PostgreSQL", "FastAPI", "LLMs", "RAG", "SQL", "Next.js", "Data Visualization"],
-      architecture: [
-        "User query",
-        "Next.js interface",
-        "FastAPI",
-        "Schema context + retrieval",
-        "LLM",
-        "SQL generation",
-        "PostgreSQL",
-        "Validation",
-        "Visualization + response",
-      ],
       // REPLACE with the public repository if this work can be shared.
       github: undefined,
-      // REPLACE captions with real screenshot descriptions once images are added.
-      screenshots: [
-        { label: "Question", caption: "Natural-language question against enterprise data." },
-        { label: "Answer", caption: "Validated SQL, chart, and written response." },
-      ],
     },
     {
       slug: "workforce-intelligence",
@@ -583,17 +565,6 @@ export const site = {
         "7, 14, 30, 60, and 90-day attrition with weekly retention and cohort trends.",
       ],
       tech: ["Python", "Pandas", "SQL", "Excel Analytics", "Power BI", "Data Modeling", "Workforce Analytics"],
-      architecture: [
-        "Operational workforce sources",
-        "Cleaning and reconciliation",
-        "Standardized person and event model",
-        "Weekly metric mart",
-        "Management dashboards",
-      ],
-      screenshots: [
-        { label: "Weekly movement", caption: "Weekly hiring, exits, and headcount." },
-        { label: "Early attrition", caption: "Tenure bands and cohort retention." },
-      ],
     },
     {
       slug: "healthcare-data-platform",
@@ -621,19 +592,6 @@ export const site = {
         "Curated data served to Redshift and enterprise reporting.",
       ],
       tech: ["AWS", "S3", "Databricks", "Spark", "PySpark", "Informatica IICS", "Redshift", "Delta Lake", "SQL"],
-      architecture: [
-        "Enterprise sources",
-        "Informatica ingestion",
-        "Amazon S3 raw layer",
-        "Spark / Databricks processing",
-        "Curated data",
-        "Redshift and analytics",
-        "Enterprise reporting",
-      ],
-      screenshots: [
-        { label: "Platform layers", caption: "Raw, processed, and analytics layers." },
-        { label: "Processing", caption: "Workload redesigned around incremental loads." },
-      ],
     },
     {
       slug: "solveai",
@@ -659,16 +617,34 @@ export const site = {
         "Backend orchestration and prompt engineering.",
       ],
       tech: ["Next.js", "React", "FastAPI", "Python", "Gemini", "REST APIs"],
-      architecture: [
-        "Next.js interface",
-        "REST API",
-        "FastAPI orchestration",
-        "Gemini model calls",
-        "Structured application data",
-      ],
       // REPLACE
       github: undefined,
-      screenshots: [{ label: "Product", caption: "AI workflow behind a FastAPI boundary." }],
+    },
+    {
+      slug: "databricks-data-modeling",
+      title: "End-to-End Data Modeling in Databricks",
+      subtitle: "Medallion layers, a star schema, and slowly changing dimensions",
+      featured: false,
+      year: "2026",
+      imageHint: "model",
+      description:
+        "A Databricks workflow that turns a simulated e-commerce sales feed into an analytics-ready dimensional model, using PySpark, Spark SQL, and Delta Lake.",
+      problem:
+        "Order tables repeat customer, product, payment, and geography on every transaction. That shape is fine for recording a sale and awkward for reporting, history, and consistent updates.",
+      solution:
+        "New orders are pulled with a date watermark into Bronze, enriched and upserted in Silver with MERGE, then modeled in Gold as a star schema. Separate notebooks show SCD Type 1, which overwrites an attribute, and SCD Type 2, which expires the old version and inserts a new one.",
+      impact: [
+        "Gold holds DimCustomers, DimProducts, DimPayments, DimRegions, DimSales, and FactSales, joined on surrogate keys.",
+        "The five sample orders total 2,689.89 in sales when each order appears once in the fact table.",
+        "A learning model, not a production warehouse: Bronze is replaced on each run, and the SCD examples sit beside the sales model rather than inside it.",
+      ],
+      highlights: [
+        "Incremental extract from the latest order date, then a Silver upsert on order_id.",
+        "Surrogate keys from ROW_NUMBER, with fact measures for quantity and unit price.",
+        "Notebooks for source data, Bronze, Silver, Gold, and SCD Type 1 and Type 2.",
+      ],
+      tech: ["Databricks", "PySpark", "Spark SQL", "Delta Lake", "SQL"],
+      github: "https://github.com/stuti-shrimal/Data-Modeling",
     },
     {
       slug: "airbnb-market-trends",
@@ -694,16 +670,7 @@ export const site = {
         "Private rooms are a large share of listings; the typical nightly price is about $142.",
       ],
       tech: ["Python", "pandas", "NumPy", "openpyxl", "Jupyter"],
-      architecture: [
-        "airbnb_price.csv",
-        "airbnb_room_type.xlsx",
-        "airbnb_last_review.tsv",
-        "Merge on listing_id",
-        "Clean dates, room type, and price",
-        "One summary DataFrame",
-      ],
       github: "https://github.com/stuti-shrimal/Exploring-Airbnb-Market-Trends",
-      screenshots: [{ label: "Notebook", caption: "Merged 2019 NYC listings and the four market results." }],
     },
     {
       slug: "car-insurance-claims",
@@ -729,15 +696,7 @@ export const site = {
         "A practical starting point for a simple production model.",
       ],
       tech: ["Python", "pandas", "NumPy", "statsmodels", "scikit-learn"],
-      architecture: [
-        "car_insurance.csv, 18 columns",
-        "Explore types, missing values, and distributions",
-        "Mean imputation",
-        "One logistic regression per feature",
-        "Accuracy from the confusion matrix",
-      ],
       github: "https://github.com/stuti-shrimal/Modeling-Car-Insurance-Claim-Outcomes",
-      screenshots: [{ label: "Result", caption: "Driving experience wins the one-feature comparison." }],
     },
     {
       slug: "credit-card-fraud",
@@ -763,18 +722,8 @@ export const site = {
         "Accuracy is the wrong headline: predicting every transaction as legitimate is 99.83% accurate and catches nothing.",
       ],
       tech: ["Python", "pandas", "XGBoost", "Optuna", "scikit-learn", "Streamlit", "MLflow", "Docker"],
-      architecture: [
-        "Raw CSV, 284,807 rows",
-        "EDA",
-        "Cleaner and quality gate",
-        "13 engineered features",
-        "Logistic regression, random forest, then tuned XGBoost",
-        "Saved model artifacts",
-        "Streamlit scoring app",
-      ],
       github: "https://github.com/stuti-shrimal/Credit-Card-Fraud-Detection",
       live: "https://credit-card-fraud-detection-stuti.streamlit.app/",
-      screenshots: [{ label: "Scoring app", caption: "Live scores, model comparison, and feature importance." }],
     },
     {
       slug: "hr-analytics",
@@ -799,15 +748,7 @@ export const site = {
         "Filters, highlighting, tooltips, and an adjustable age bin.",
       ],
       tech: ["Tableau Desktop 2025.3", "Excel"],
-      architecture: [
-        "HR Data.xlsx",
-        "Calculated attrition fields",
-        "KPI, demographic, and satisfaction worksheets",
-        "Age-bin parameter",
-        "Executive dashboard",
-      ],
       github: "https://github.com/stuti-shrimal/HR-Analytics",
-      screenshots: [{ label: "Dashboard", caption: "Attrition KPIs, demographics, and job satisfaction." }],
     },
     {
       slug: "montgomery-traffic",
@@ -833,14 +774,7 @@ export const site = {
         "A first look before any predictive model.",
       ],
       tech: ["Python", "pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
-      architecture: [
-        "Montgomery County violation records",
-        "Clean missing values, dates, and categories",
-        "Frequency, time, and location analysis",
-        "Charts",
-      ],
       github: "https://github.com/stuti-shrimal/Traffic-Violation-Analysis-on-Montgomery-County",
-      screenshots: [{ label: "Trends", caption: "Violation type, time of day, and higher-volume locations." }],
     },
     {
       slug: "portfolio-analysis",
@@ -866,16 +800,7 @@ export const site = {
         "Bonds, silver, and the euro are the low-correlation sleeves.",
       ],
       tech: ["Python", "pandas", "NumPy", "Matplotlib", "Monte Carlo"],
-      architecture: [
-        "Eight instruments, four asset classes",
-        "Moving-average and Bollinger strategies",
-        "Correlation matrix",
-        "Equal-weighted baseline",
-        "5,000-step Monte Carlo frontier",
-        "Out-of-sample check through October 2022",
-      ],
       github: "https://github.com/stuti-shrimal/Portfolio-Analysis",
-      screenshots: [{ label: "Portfolio", caption: "In-sample Sharpe 1.28, then the same weights through October 2022." }],
     },
   ] as Project[],
 
